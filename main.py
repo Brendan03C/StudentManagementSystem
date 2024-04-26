@@ -6,8 +6,10 @@ J Pickering
 '''
 
 studentRecords = []
+MAX_RECORDS = 3
 userInput = ''
 welcomeText = 'welcome.txt'
+userIndex = -1
 
 def main():
     
@@ -39,18 +41,53 @@ def main():
 
 
 def addStudent():
-    pass
+    while len(studentRecords) <= MAX_RECORDS-1:
+        userInput = input("Please enter the name you would like to add (Q to quit): ")
+        if not userInput.upper() == 'Q':
+            studentRecords.append(userInput)
+            print(f'successfully added user: {userInput}')
+        else:
+            break
+    if len(studentRecords) == MAX_RECORDS: print("Database is full. Please delete a name first. ")
+    userInput = input("Press anything to continue!")
 
 def deleteStudent():
-    pass
+    userInput = '-1'
+    while not userInput.upper() == 'Q':
+        userInput = input("Please enter the name you would like to remove (Q to quit): ")
+        userIndex = findStudent(userInput)
+        if not userIndex == -1:
+            studentRecords.pop(userIndex)
+        elif not userInput.upper() == 'Q':
+            print('Student not found. ')
+    userInput = input("Press anything to continue!")
+
 
 def searchStudent():
-    pass
+    userInput = '-1'
+    while not userInput.upper() == 'Q':
+        userInput = input("Please enter the name you would like to locate (Q to quit): ")
+        userIndex = findStudent(userInput)
+        if not userIndex == -1:
+            print(f'Student {studentRecords[userIndex]} has been found in file. ')
+        elif not userInput.upper() == 'Q':
+            print('Student not found.')
+    userInput = input("Press anything to continue!")
 
 def displayAllStudents():
-    pass
+    while True:
+        for i in range(len(studentRecords)): 
+            if i == len(studentRecords)-1: print(studentRecords[i])
+            else: print(studentRecords[i], end=', ')
+        userInput = input("Press anything to continue:")
+        break
 
-def findStudent():
-    pass
+def findStudent(student:str) -> int:
+    try:
+        x = studentRecords.index(student)
+    except ValueError as e:
+        x = -1
+    #print(x)                                #for debugging only
+    return x
 
 main()
