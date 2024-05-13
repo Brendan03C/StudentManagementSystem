@@ -1,8 +1,0 @@
---------------------------------
-Student Record Management System
---------------------------------
-1. Add a new student record
-2. Delete a student record
-3. Search for a student record
-4. Display all student records
-5. Exit
