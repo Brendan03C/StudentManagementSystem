@@ -1,3 +1,7 @@
+#CS 131: Python Programming I
+#Project: Student Record Management System
+#Members: Brendan Cantril, J Pickering
+
 students=[]
 def main():
     print("Student Record Management System","\n1. Add a student.","\n2. Delete a student.","\n3. Search for a student.","\n4. Display all students.","\n5. Exit","\n")
